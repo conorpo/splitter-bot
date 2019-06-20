@@ -114,6 +114,9 @@ const commands = {
         shuffle(lockedMembers);
 
         const [captainOne, captainTwo] = lockedMembers;
+
+        captainOne[1].setVoiceChannel(guild.captainChannel.id);
+        captainTwo[1].setVoiceChannel(guild.captainChannel.id);
         
         callback(`Captains are ${captainOne[1].nickname || captainOne[1].user.username} and ${captainTwo[1].nickname || captainTwo[1].user.username}`, captainOne, captainTwo);
     },
