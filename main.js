@@ -168,10 +168,6 @@ const commands = {
         }
     },
 
-    fuckentropy: (guild, message, args, callback) => {
-        callback("EYY FUCK YOU <@208713421192036352>")
-    },
-
     help: (guild, message, args, callback) => {
         switch (args[0]) {
             case 'captains':
@@ -194,7 +190,7 @@ const commands = {
             default:
                 callback('This is a bot made by <@118098246655672329> that is able to randomly split up a voice channel. \n' +
                          '```\n>gather: Moves everyone to your channel\n>set: Sets the target channels\n' +
-                        '>split: Split everyone in your voice channel into two random teams\n>captains: Pick two random captains\n>fuckentropy: Secret```' + 
+                        '>split: Split everyone in your voice channel into two random teams\n>captains: Pick two random captains```' + 
                         'See `>help [command]` for help with a specific command');
                 break;
         }
