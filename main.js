@@ -122,6 +122,7 @@ const commands = {
     },
 
     gather: (guild, message, args, callback) => {
+        if(guild.gathering) return;
         let argChannelId = null;
         if(args.length > 0) {
             const channelName = args.join(' ').toLowerCase('').trim();
@@ -133,11 +134,14 @@ const commands = {
 
         const targetId = argChannelId || message.member.voiceChannelID;
 
+        guildgathering = true;
         guild.channels.filter(channel => channel.type === 'voice' && (channel.joinable && channel.id !== targetId)).forEach(channel => {
             channel.members.forEach(member => member.setVoiceChannel(targetId));
         })
 
-        setTimeout(callback, 2000);
+        setTimeout(function(){
+            guild.gathering = false;
+        }, 2000);
     },
 
     set: (guild, message, args, callback) => {
