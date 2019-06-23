@@ -121,7 +121,7 @@ const commands = {
 
         if (!args[0].startsWith('no')) {
             if (!guild.captainChannel) return callback(">set captain");
-            
+
             captainOne[1].setVoiceChannel(guild.captainChannel.id);
             captainTwo[1].setVoiceChannel(guild.captainChannel.id);
         }
@@ -186,7 +186,7 @@ const commands = {
     help: (guild, message, args, callback) => {
         switch (args[0]) {
             case 'captains':
-                callback("Pick two random captains\nUsage: ```\n>captains```")
+                callback("Pick two random captains\nUsage: ```\n>captains [nomove]\n[nomove]: Enter anything starting with 'no' to enable this, where captains aren't moved to a seperate channel, by default this is false (captains are moved)```")
                 break;
             case 'split':
                 callback("Split everyone in your voice channel into two random teams\nUsage: ```\n>split [captains]\n[captains]: Enter 'captains' if you want captains"+
