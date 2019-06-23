@@ -106,17 +106,23 @@ const commands = {
     },
 
     captains: (guild, message, args, callback) => {
+
+
         if (!message.member.voiceChannelID) return callback("You are not in a voice channel");
+
+        if (!guild.captainChannel) return callback(">set captain");
 
         const channel = guild.channels.find(channel => channel.id === message.member.voiceChannelID);
         
-        const lockedMembers = [...channel.members]
+        const lockedMembers = [...channel.members].filter(member => !member.user.bot)
         shuffle(lockedMembers);
 
         const [captainOne, captainTwo] = lockedMembers;
 
-        captainOne[1].setVoiceChannel(guild.captainChannel.id);
-        captainTwo[1].setVoiceChannel(guild.captainChannel.id);
+        if (!args[0].startsWith('no')) {
+            captainOne[1].setVoiceChannel(guild.captainChannel.id);
+            captainTwo[1].setVoiceChannel(guild.captainChannel.id);
+        }
         
         callback(`Captains are ${captainOne[1].nickname || captainOne[1].user.username} and ${captainTwo[1].nickname || captainTwo[1].user.username}`, captainOne, captainTwo);
     },
