@@ -120,6 +120,8 @@ const commands = {
         const [captainOne, captainTwo] = lockedMembers;
 
         if (!args[0].startsWith('no')) {
+            if (!guild.captainChannel) return callback(">set captain");
+            
             captainOne[1].setVoiceChannel(guild.captainChannel.id);
             captainTwo[1].setVoiceChannel(guild.captainChannel.id);
         }
