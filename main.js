@@ -114,7 +114,7 @@ const commands = {
 
         const channel = guild.channels.find(channel => channel.id === message.member.voiceChannelID);
         
-        const lockedMembers = [...channel.members].filter(member => !member.user.bot)
+        const lockedMembers = [...channel.members].filter(member => !member[1].user.bot)
         shuffle(lockedMembers);
 
         const [captainOne, captainTwo] = lockedMembers;
