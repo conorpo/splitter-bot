@@ -1,4 +1,4 @@
-const token = "NTkxMjY5NDI1NDI1MDIzMDAz.XQuUnw.SZGysib9F5qcm7PjhwwC1JEraxM";
+const token = process.env.TOKEN;
 const prefix = ">"
 
 const Discord = require('discord.js');
